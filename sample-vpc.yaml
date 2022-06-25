@@ -1,0 +1,20 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: VPC
+metadata:
+  name: crossplane-demo-vpc
+spec:
+  forProvider:
+    region: us-east-1
+    cidrBlock: 192.168.0.0/16
+    enableDnsSupport: true
+    enableDnsHostNames: true
+    tags:
+    - key: Environment
+      value: Production
+    - key: Owner
+      value: Spandan
+    - key: Name
+      value: crossplane-demo-vpc
+    instanceTenancy: default
+  providerConfigRef:
+    name: awsconfig
